@@ -46,6 +46,7 @@ GEM
       terminal-table (~> 1.4)
     builder (3.0.4)
     choice (0.1.6)
+    chronic (0.10.1)
     chunky_png (1.2.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -160,6 +161,7 @@ GEM
       nokogiri (>= 1.4.0)
       nori (~> 2.1.0)
       wasabi (~> 3.1.0)
+    settingslogic (2.0.9)
     sexp_processor (4.3.0)
     simple_form (2.1.0)
       actionpack (~> 3.0)
@@ -197,6 +199,9 @@ GEM
     wasabi (3.1.0)
       httpi (~> 2.0)
       nokogiri (>= 1.4.0)
+    whenever (0.8.2)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -219,8 +224,10 @@ DEPENDENCIES
   russian
   sass-rails
   savon
+  settingslogic
   simple_form
   sunspot_rails
   sunspot_solr
   uglifier
   unicorn
+  whenever

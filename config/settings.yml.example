@@ -1,0 +1,12 @@
+defaults: &defaults
+  contingent:
+    wsdl:       url
+    auth:
+      login:    user
+      password: pass
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults

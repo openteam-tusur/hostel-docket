@@ -19,8 +19,10 @@ group :default do
   gem 'rails', '~> 3.2'
   gem 'russian'
   gem 'savon'
+  gem 'settingslogic'
   gem 'simple_form'
   gem 'sunspot_rails'
+  gem 'whenever'
 end
 
 group :development do
