@@ -1,0 +1,16 @@
+<h1>Список статей</h1>
+<%= link_to "добавить", new_point_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Баллы</th>
+      <th>Дополнительно</th>
+      <th>Инициатор</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render collection %>
+  </tbody>
+</table>

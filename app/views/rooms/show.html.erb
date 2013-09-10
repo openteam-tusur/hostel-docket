@@ -1,0 +1,6 @@
+<h1><%= link_to @hostel.title, @hostel %> комната №<%= @room.number %></h1>
+
+<h2>Жильцы</h2>
+<ul>
+  <%= render @room.roomers %>
+</ul>

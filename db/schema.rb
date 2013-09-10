@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910023435) do
+ActiveRecord::Schema.define(:version => 20130910052120) do
 
   create_table "hostels", :force => true do |t|
     t.string   "address"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20130910023435) do
     t.integer  "contingent_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "points", :force => true do |t|
+    t.text     "description"
+    t.string   "initiator"
+    t.string   "note"
+    t.integer  "mark"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "roomers", :force => true do |t|

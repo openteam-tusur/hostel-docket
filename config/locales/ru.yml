@@ -1,0 +1,16 @@
+ru:
+  enumerize:
+    point:
+      note:
+        eviction:           Ходатайство о выселении
+        note_of_warning:    Предупреждение от студенческого совета
+        sending_down:       Ходатайство об отчислении
+        recovery:           Восстановление испорченного имущества
+        deprivation:        Лишение права проживания на следующий год
+        confiscation:       Конфискация
+        work:               Выполнение хозяйственных работ
+      initiator:
+        monitor:            Староста этажа (секции)
+        brotherhood:        Студенческий профсоюз
+        orderly:            Дежурный СООПР
+        sanitary_committee: Санитарная комиссия

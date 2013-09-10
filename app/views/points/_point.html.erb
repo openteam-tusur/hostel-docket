@@ -1,0 +1,10 @@
+<tr>
+  <td><%= point.description %></td>
+  <td><%= point.mark %></td>
+  <td><%= point.note.map(&:text).join(', ') %></td>
+  <td><%= point.initiator.map(&:text).join(', ') %></td>
+  <td>
+    <%= link_to 'редактировать', edit_point_path(point) %>
+    <%= link_to 'удалить', point_path(point), :method => :delete, :confirm => 'Вы уверены?' %>
+  </td>
+</tr>

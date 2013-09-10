@@ -1,0 +1,10 @@
+<%= simple_form_for resource do |f| %>
+  <%= f.input :description %>
+  <%= f.input :mark %>
+  <%= f.input :note, :as => :check_boxes %>
+  <%= f.input :initiator, :as => :check_boxes %>
+  <div class="buttons">
+    <%= f.submit 'Сохранить' %>
+    <%= link_to 'Отмена', collection_path %>
+  </div>
+<% end %>
