@@ -1,3 +1,149 @@
 @import 'compass/reset'
 @import 'compass/utilities'
 
+html, body
+  color: #222
+  font-size: 12px
+  line-height: 16px
+  height: 100%
+
+html, body, input, textarea, select, button, a, p, b, i
+  font-family: 'Verdana', sans-serif
+  font-weight: normal
+
+h1, h2, h3, h4, h5, h6
+  font-weight: normal
+
+h1
+  font-size: 18px
+  line-height: 20px
+  margin: 10px 0
+
+h2
+  font-size: 16px
+  line-height: 18px
+  margin: 9px 0
+
+h3
+  font-size: 14px
+  line-height: 16px
+  margin: 8px 0
+
+p
+  margin: 0 0 7px 0
+
+i
+  font-style: italic
+
+a
+  color: #3b29c8
+
+  &:hover
+    color: #8174e3
+
+body
+  margin: 15px auto
+  width: 1024px
+
+.to_right
+  float: right
+
+.menu
+  font-size: 16px
+  text-align: center
+
+  a
+    margin: 0 5px
+
+.breadcrumbs
+  font-size: 10px
+  font-style: italic
+  margin: 25px 0
+
+  ul
+    +clearfix
+
+    li
+      float: left
+
+      &:after
+        content: '\2192'
+        margin: 0 5px 0 0
+
+      &:last-child
+        &:after
+          content: ''
+
+.list
+  li
+    margin: 0 0 10px 0
+
+.info
+  color: #555
+  margin: 0 0 5px 0
+
+  .label
+    margin: 0 5px 0 0
+
+table
+  border-collapse: collapse
+  width: 100%
+
+  thead
+    font-size: 14px
+    color: #555
+
+    th
+      text-align: center
+      padding: 5px
+
+  tbody
+    tr:nth-child(even)
+      background: #eee
+
+    td
+      font-size: 10px
+      padding: 10px
+      text-align: center
+      vertical-align: middle
+
+      &:first-child
+        font-size: 14px
+        text-align: left
+
+form
+  div.input
+    margin: 0 0 15px 0
+
+  label
+    color: #555
+    display: block
+    margin: 0 0 5px 0
+
+  textarea
+    font-size: 14px
+    height: 60px
+    padding: 3px 6px
+    width: 1012px
+
+  .checkbox
+    +clearfix
+    display: block
+    margin: 5px 0
+
+    input
+      float: left
+      margin: 0 5px 0 0
+
+    label
+      color: #222
+
+  .buttons
+    margin: 15px 0
+
+    input
+      font-size: 16px
+      margin: 0 10px 0 0
+
+    a
+      font-size: 14px

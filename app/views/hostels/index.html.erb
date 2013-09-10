@@ -1,4 +1,22 @@
-<h1>Общежития</h1>
-<ul>
+<div class='breadcrumbs'>
+  <ul>
+    <li>
+      <span>Список общежитий</span>
+    </li>
+  </ul>
+</div>
+
+<div class="info">
+  <span class="label">Всего комнат:</span>
+  <span class="value"><%= Room.count %> ком.</span>
+</div>
+<div class="info">
+  <span class="label">Всего жильцов:</span>
+  <span class="value"><%= Roomer.count %> чел.</span>
+</div>
+
+<h1>Список общежитий</h1>
+
+<ul class='list'>
   <%= render collection %>
 </ul>

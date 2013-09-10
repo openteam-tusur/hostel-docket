@@ -1,3 +1,18 @@
-<h1><%= @roomer.full_name %></h1>
-<%= link_to @hostel.title, @hostel %>
-комната <%= link_to @room.number, [@hostel, @room] %>
+<div class='breadcrumbs'>
+  <ul>
+    <li>
+      <%= link_to 'Список общежитий', hostels_path %>
+    </li>
+    <li>
+      <%= link_to @hostel.title, hostel_path(@hostel) %>
+    </li>
+    <li>
+      <%= link_to "Комната №#{@room.number}", hostel_room_path(@hostel, @room) %>
+    </li>
+    <li>
+      <span><%= @roomer.full_name %></span>
+    </li>
+  </ul>
+</div>
+
+<h1><%= @hostel.title %>, комната №<%= @room.number %>, <%= @roomer.full_name %></h1>

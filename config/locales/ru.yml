@@ -1,16 +1,25 @@
 ru:
+  activerecord:
+    attributes:
+      point:
+        description: Название статьи
+        mark: Баллы
+        note: Дополнительно
+        initiator: Инициатор
+
   enumerize:
     point:
       note:
+        confiscation:       Конфискация
+        deprivation:        Лишение права проживания на следующий год
         eviction:           Ходатайство о выселении
         note_of_warning:    Предупреждение от студенческого совета
-        sending_down:       Ходатайство об отчислении
         recovery:           Восстановление испорченного имущества
-        deprivation:        Лишение права проживания на следующий год
-        confiscation:       Конфискация
+        sending_down:       Ходатайство об отчислении
         work:               Выполнение хозяйственных работ
+
       initiator:
-        monitor:            Староста этажа (секции)
         brotherhood:        Студенческий профсоюз
+        monitor:            Староста этажа (секции)
         orderly:            Дежурный СООПР
         sanitary_committee: Санитарная комиссия

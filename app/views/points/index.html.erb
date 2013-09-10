@@ -1,5 +1,13 @@
+<div class="breadcrumbs">
+  <ul>
+    <li>
+      <span>Список статей</span>
+    </li>
+  </ul>
+</div>
+
+<%= link_to "добавить статью", new_point_path, :class => 'to_right' %>
 <h1>Список статей</h1>
-<%= link_to "добавить", new_point_path %>
 
 <table>
   <thead>
@@ -8,6 +16,7 @@
       <th>Баллы</th>
       <th>Дополнительно</th>
       <th>Инициатор</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>

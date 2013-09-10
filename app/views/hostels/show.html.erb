@@ -1,7 +1,30 @@
-<h1><%= @hostel.title %></h1>
-<%= @hostel.address %>
+<div class='breadcrumbs'>
+  <ul>
+    <li>
+      <%= link_to 'Список общежитий', hostels_path %>
+    </li>
+    <li>
+      <span><%= @hostel.title %></span>
+    </li>
+  </ul>
+</div>
 
-<h2>Комнаты</h2>
-<ul>
+<h1><%= @hostel.title %></h1>
+
+<div class='info'>
+  <span class="label">Адрес:</span>
+  <span class='value'><%= @hostel.address %></span>
+</div>
+<div class="info">
+  <span class="label">Кол-во комнат:</span>
+  <span class="value"><%= @hostel.rooms.count %> ком.</span>
+</div>
+<div class="info">
+  <span class="label">Кол-во жильцов:</span>
+  <span class="value"><%= @hostel.roomers.count %> чел.</span>
+</div>
+
+<h2>Список комнат</h2>
+<ul class='list'>
   <%= render @hostel.rooms %>
 </ul>

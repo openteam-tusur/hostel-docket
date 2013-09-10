@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HostelDocket</title>
+    <title>Рейтинг общежития</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= link_to "Список общежитий", root_path %>
+    <div class="menu">
+      <%= link_to "Список общежитий", root_path %>
+      <%= link_to "Список статей", points_path %>
+    </div>
     <%= yield %>
   </body>
 </html>

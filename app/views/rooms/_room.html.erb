@@ -1,4 +1,3 @@
 <li>
-  <%= link_to room.number, [@hostel, room] %>
-  ( <%= room.roomers.count %> чел. )
+  <%= link_to "Комната №#{room.number}", [@hostel, room] %> (<%= room.roomers.count %> чел.)
 </li>
