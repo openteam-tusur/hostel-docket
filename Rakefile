@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Hostel::Application.load_tasks
+HostelDocket::Application.load_tasks
