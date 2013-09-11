@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910052120) do
+ActiveRecord::Schema.define(:version => 20130911031813) do
 
   create_table "hostels", :force => true do |t|
     t.string   "address"
@@ -25,10 +25,27 @@ ActiveRecord::Schema.define(:version => 20130910052120) do
     t.text     "description"
     t.string   "initiator"
     t.string   "note"
+    t.string   "number"
     t.integer  "mark"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "records", :force => true do |t|
+    t.text     "point_description"
+    t.string   "point_initiator"
+    t.string   "point_note"
+    t.string   "point_number"
+    t.integer  "point_mark"
+    t.string   "hostel"
+    t.string   "room"
+    t.text     "memo"
+    t.integer  "roomer_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "records", ["roomer_id"], :name => "index_records_on_roomer_id"
 
   create_table "roomers", :force => true do |t|
     t.string   "surname"

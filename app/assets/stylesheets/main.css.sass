@@ -5,7 +5,6 @@ html, body
   color: #222
   font-size: 12px
   line-height: 16px
-  height: 100%
 
 html, body, input, textarea, select, button, a, p, b, i
   font-family: 'Verdana', sans-serif
@@ -17,22 +16,23 @@ h1, h2, h3, h4, h5, h6
 h1
   font-size: 18px
   line-height: 20px
-  margin: 10px 0
+  margin: 18px 0
 
 h2
   font-size: 16px
   line-height: 18px
-  margin: 9px 0
+  margin: 16px 0
 
 h3
   font-size: 14px
   line-height: 16px
-  margin: 8px 0
+  margin: 14px 0
 
 p
   margin: 0 0 7px 0
 
 i
+  color: #555
   font-style: italic
 
 a
@@ -78,6 +78,11 @@ body
   li
     margin: 0 0 10px 0
 
+    &.empty
+      color: #555
+      font-size: 18px
+      text-align: center
+
 .info
   color: #555
   margin: 0 0 5px 0
@@ -107,13 +112,26 @@ table
       text-align: center
       vertical-align: middle
 
-      &:first-child
+      &:nth-child(2)
         font-size: 14px
         text-align: left
 
 form
+  .error
+    +inline-block
+    color: #f46f80
+    margin: 10px
+
   div.input
     margin: 0 0 15px 0
+
+    input, textarea
+      border: 1px solid #555
+      padding: 3px 6px
+
+  div.point_number, div.record_point_mark, div.record_point_number, div.point_mark
+    input
+      width: 45px
 
   label
     color: #555
@@ -123,7 +141,6 @@ form
   textarea
     font-size: 14px
     height: 60px
-    padding: 3px 6px
     width: 1012px
 
   .checkbox
@@ -147,3 +164,14 @@ form
 
     a
       font-size: 14px
+
+.search
+  margin: 25px 0
+
+  form
+    input
+      color: #555
+      border: 1px solid #222
+      font-size: 16px
+      padding: 3px 7px
+      width: 400px

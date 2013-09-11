@@ -1,0 +1,13 @@
+<h1>Результаты поиска: <i><%= params[:q] %></i></h1>
+<ul class='list'>
+  <% if @results.any? %>
+    <% @results.each do |result| %>
+      <li>
+        <%= link_to result, [result.hostel, (result.room if result.respond_to?(:room)), result].compact %>
+        (<%= result.hostel.title %><%= ", #{result.room}" if result.respond_to?(:room) %>)
+      </li>
+    <% end %>
+  <% else %>
+    <li class='empty'>К сожалению, ничего не найдено ;(</li>
+  <% end %>
+</ul>

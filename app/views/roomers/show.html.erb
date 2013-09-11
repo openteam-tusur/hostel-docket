@@ -15,4 +15,11 @@
   </ul>
 </div>
 
-<h1><%= @hostel.title %>, комната №<%= @room.number %>, <%= @roomer.full_name %></h1>
+<h1><%= @roomer.full_name %>, <%= @hostel.title %>, комната №<%= @room.number %></h1>
+
+<%= link_to "добавить новую запись", new_hostel_room_roomer_record_path(@hostel, @room, @roomer), :class => 'to_right' %>
+<h2>Записи поощрений и наказаний</h2>
+
+<ul>
+  <%= render @roomer.records  %>
+</ul>

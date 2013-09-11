@@ -11,6 +11,13 @@
       <%= link_to "Список общежитий", root_path %>
       <%= link_to "Список статей", points_path %>
     </div>
+
+    <div class="search">
+      <%= simple_form_for :search, :url => search_path, :method => :get do |f| %>
+        <%= f.input :q, :label => false, :placeholder => 'ФИО жильца или номер комнаты', :input_html => { :name => :q }, :autofocus => true %>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

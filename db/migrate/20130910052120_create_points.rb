@@ -4,6 +4,7 @@ class CreatePoints < ActiveRecord::Migration
       t.text :description
       t.string :initiator
       t.string :note
+      t.string :number
       t.integer :mark
 
       t.timestamps

@@ -1,0 +1,13 @@
+<%= simple_form_for [@hostel, @room, @roomer, resource] do |f| %>
+  <%= f.input :point_number %>
+  <%= f.input :point_description %>
+  <%= f.input :point_mark %>
+  <%= f.input :point_note %>
+  <%= f.input :point_initiator %>
+
+  <%= f.input :memo %>
+  <div class='buttons'>
+    <%= f.submit 'Сохранить' %>
+    <%= link_to 'Отмена', parent_path %>
+  </div>
+<% end %>

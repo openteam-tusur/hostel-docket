@@ -3,8 +3,13 @@ class Room < ActiveRecord::Base
   belongs_to :hostel
   has_many :roomers, :dependent => :destroy
   normalize_attributes :number
+  alias_attribute :to_s, :title
 
   searchable do
-    text :number
+    string :number
+  end
+
+  def title
+    "Комната #{number}"
   end
 end

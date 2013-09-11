@@ -1,6 +1,6 @@
 class Point < ActiveRecord::Base
   extend Enumerize
-  attr_accessible :description, :initiator, :mark, :note
+  attr_accessible :description, :initiator, :mark, :note, :number
 
   serialize :note, Array
   enumerize :note,
@@ -24,4 +24,8 @@ class Point < ActiveRecord::Base
               :orderly,
               :sanitary_committee
             ]
+
+  scope :by_number, ->(a) { order('number ASC') }
+
+  validates_format_of :number, :with => /\A\d+(\.\d+)*\z/
 end

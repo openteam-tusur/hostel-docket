@@ -2,10 +2,21 @@ ru:
   activerecord:
     attributes:
       point:
-        description: Название статьи
-        mark: Баллы
-        note: Дополнительно
-        initiator: Инициатор
+        description:       Название статьи
+        initiator:         Инициатор
+        mark:              Баллы
+        note:              Дополнительно
+        number:            Пункт
+
+      record:
+        hostel:             Общежитие
+        memo:               Примечания
+        point_description:  Название статьи
+        point_initiator:    Инициатор
+        point_mark:         Баллы
+        point_note:         Дополнительно
+        point_number:       Пункт статьи
+        room:               Номер комнаты
 
   enumerize:
     point:

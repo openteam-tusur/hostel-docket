@@ -3,4 +3,5 @@ class Hostel < ActiveRecord::Base
   has_many :rooms, :dependent => :destroy, :order => :number
   has_many :roomers, :through => :rooms
   normalize_attributes :address, :title, :contingent_id
+  alias_attribute :to_s, :title
 end

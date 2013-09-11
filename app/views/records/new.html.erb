@@ -1,0 +1,22 @@
+<div class='breadcrumbs'>
+  <ul>
+    <li>
+      <%= link_to 'Список общежитий', hostels_path %>
+    </li>
+    <li>
+      <%= link_to @hostel.title, hostel_path(@hostel) %>
+    </li>
+    <li>
+      <%= link_to "Комната №#{@room.number}", hostel_room_path(@hostel, @room) %>
+    </li>
+    <li>
+      <%= link_to @roomer.full_name, hostel_room_roomer_path(@hostel, @room, @roomer) %>
+    </li>
+    <li>
+      <span>Новая запись</span>
+    </li>
+  </ul>
+</div>
+
+<h1>Новая запись</h1>
+<%= render 'form' %>
