@@ -1,5 +1,7 @@
 HostelDocket::Application.routes.draw do
-  resources :points, :except => [:show]
+  resources :points, :except => [:show] do
+    get 'search', :on => :collection
+  end
   resources :hostels, :only => [:index, :show] do
     resources :rooms, :only => [:show] do
       resources :roomers, :only => [:show] do

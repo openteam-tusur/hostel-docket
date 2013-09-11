@@ -1,0 +1,22 @@
+<li>
+  <div class="actions">
+    <%= link_to "редактировать", edit_hostel_room_roomer_record_path(@hostel, @room, @roomer, record) %>
+    <%= link_to "удалить", hostel_room_roomer_record_path(@hostel, @room, @roomer, record), :method => :delete, :confirm => 'Вы уверены?' %>
+  </div>
+
+  <div class="date">
+    <%= l record.created_at, :format => :long %>
+  </div>
+
+  <div class="point">
+    <%= record.full_description %>
+  </div>
+
+  <div class="mark">
+    <%= "#{record.mark} балл." if record.mark.present? %>
+  </div>
+
+  <div class="note">
+    <%= record.note.map(&:text).join(', ') %>
+  </div>
+</li>

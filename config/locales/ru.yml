@@ -1,7 +1,7 @@
 ru:
   activerecord:
     attributes:
-      point:
+      point: &attrs
         description:       Название статьи
         initiator:         Инициатор
         mark:              Баллы
@@ -11,15 +11,11 @@ ru:
       record:
         hostel:             Общежитие
         memo:               Примечания
-        point_description:  Название статьи
-        point_initiator:    Инициатор
-        point_mark:         Баллы
-        point_note:         Дополнительно
-        point_number:       Пункт статьи
         room:               Номер комнаты
+        <<: *attrs
 
   enumerize:
-    point:
+    point: &enums
       note:
         confiscation:       Конфискация
         deprivation:        Лишение права проживания на следующий год
@@ -34,3 +30,6 @@ ru:
         monitor:            Староста этажа (секции)
         orderly:            Дежурный СООПР
         sanitary_committee: Санитарная комиссия
+
+    record:
+      <<: *enums

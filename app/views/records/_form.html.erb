@@ -1,9 +1,15 @@
 <%= simple_form_for [@hostel, @room, @roomer, resource] do |f| %>
-  <%= f.input :point_number %>
-  <%= f.input :point_description %>
-  <%= f.input :point_mark %>
-  <%= f.input :point_note %>
-  <%= f.input :point_initiator %>
+  <%= f.input :number, :input_html => { :value => resource.new_record? ? @point.number : resource.number, :class => 'disabled' } %>
+  <%= f.input :description, :input_html => { :value => resource.new_record? ? @point.description : resource.description, :class => 'disabled' } %>
+  <%= f.input :mark, :input_html => { :value => resource.new_record? ? @point.mark : resource.mark } %>
+
+  <% if resource.new_record? %>
+    <%= f.input :note, :as => :check_boxes, :checked => @point.note.to_ary %>
+    <%= f.input :initiator, :as => :check_boxes, :checked => @point.initiator.to_ary %>
+  <% else %>
+    <%= f.input :note, :as => :check_boxes %>
+    <%= f.input :initiator, :as => :check_boxes %>
+  <% end %>
 
   <%= f.input :memo %>
   <div class='buttons'>

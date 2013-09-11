@@ -32,17 +32,17 @@ ActiveRecord::Schema.define(:version => 20130911031813) do
   end
 
   create_table "records", :force => true do |t|
-    t.text     "point_description"
-    t.string   "point_initiator"
-    t.string   "point_note"
-    t.string   "point_number"
-    t.integer  "point_mark"
+    t.text     "description"
+    t.string   "initiator"
+    t.string   "note"
+    t.string   "number"
+    t.integer  "mark"
     t.string   "hostel"
     t.string   "room"
     t.text     "memo"
     t.integer  "roomer_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "records", ["roomer_id"], :name => "index_records_on_roomer_id"

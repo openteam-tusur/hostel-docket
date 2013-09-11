@@ -25,7 +25,18 @@ class Point < ActiveRecord::Base
               :sanitary_committee
             ]
 
-  scope :by_number, ->(a) { order('number ASC') }
-
   validates_format_of :number, :with => /\A\d+(\.\d+)*\z/
+
+  searchable do
+    text :full_description
+    string :number
+  end
+
+  def full_description
+    "#{number} #{description}"
+  end
+
+  def as_json(options)
+    super(:only => [:id]).merge({ :label => full_description, :name => full_description })
+  end
 end

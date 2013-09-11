@@ -17,9 +17,29 @@
 
 <h1><%= @roomer.full_name %>, <%= @hostel.title %>, комната №<%= @room.number %></h1>
 
-<%= link_to "добавить новую запись", new_hostel_room_roomer_record_path(@hostel, @room, @roomer), :class => 'to_right' %>
+<div class="info">
+  <span class="label">Текущий рейтинг:</span>
+  <span class="value"><%= @roomer.current_rating %> балл.</span>
+</div>
+
+<div class="adding_new_record">
+  <h3>Добавление записи</h3>
+  <%= simple_form_for :search, :url => search_points_path, :remote => true, :method => :get do |f| %>
+    <%= f.input :q, :input_html => { :class => 'need_autocomplete' }, :label => false, :placeholder => 'Начните писать номер пункта или текст статьи' %>
+  <% end %>
+  <div class="actions">
+    <%= link_to 'добавить новую запись', new_hostel_room_roomer_record_path(@hostel, @room, @roomer), :class => 'new_record_link disabled' %>
+    <%= link_to 'отмена', '#', :class => 'cancel' %>
+  </div>
+</div>
+
+<%= link_to "добавить новую запись", '#', :class => 'show_form to_right enabled' %>
 <h2>Записи поощрений и наказаний</h2>
 
-<ul>
-  <%= render @roomer.records  %>
+<ul class='list'>
+  <% if @roomer.records.by_current_year.any? %>
+    <%= render @roomer.records.by_current_year %>
+  <% else %>
+    <li class='empty'>Нет записей</li>
+  <% end %>
 </ul>
