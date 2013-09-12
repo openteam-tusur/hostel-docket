@@ -26,8 +26,10 @@ group :default do
 end
 
 group :development do
-  gem 'openteam-capistrano'
+  gem 'capistrano-db-tasks', :git => 'git://github.com/sgruhier/capistrano-db-tasks'
+  gem 'capistrano-unicorn'
   gem 'hirb'
+  gem 'openteam-capistrano'
   gem 'sunspot_solr'
 end
 
