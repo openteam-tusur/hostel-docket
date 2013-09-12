@@ -13,7 +13,6 @@ end
 group :default do
   gem 'attribute_normalizer'
   gem 'enumerize'
-  gem 'has_scope'
   gem 'inherited_resources'
   gem 'pg'
   gem 'progress_bar'
@@ -27,12 +26,12 @@ group :default do
 end
 
 group :development do
-  gem 'brakeman'
+  gem 'openteam-capistrano'
   gem 'hirb'
-  gem 'rails-erd'
   gem 'sunspot_solr'
 end
 
 group :production do
   gem 'unicorn'
+  gem 'airbrake'
 end
