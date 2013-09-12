@@ -30,6 +30,7 @@ group :development do
   gem 'capistrano-unicorn'
   gem 'hirb'
   gem 'openteam-capistrano'
+  gem 'sqlite3'
   gem 'sunspot_solr'
 end
 
