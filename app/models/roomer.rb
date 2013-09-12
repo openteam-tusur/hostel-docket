@@ -5,12 +5,18 @@ class Roomer < ActiveRecord::Base
   has_many :records, :dependent => :destroy, :order => 'created_at DESC'
   normalize_attributes :name, :patronymic, :surname
   alias_attribute :to_s, :full_name
+  scope :active, -> { where(:deleted_at => nil) }
 
   searchable do
     text :surname
     text :name
     text :patronymic
     string :full_name
+    boolean :active
+  end
+
+  def active
+    deleted_at == nil
   end
 
   def full_name
