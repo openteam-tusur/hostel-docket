@@ -5,6 +5,13 @@ defaults: &defaults
       login:    user
       password: pass
 
+  app:
+    secret:     SECRET
+
+  errors:
+    key:        SECRET
+    host:       errors.openteam.ru
+
 development:
   <<: *defaults
 
