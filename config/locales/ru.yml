@@ -26,10 +26,10 @@ ru:
         work:               Выполнение хозяйственных работ
 
       initiator:
-        brotherhood:        Студенческий профсоюз
+        brotherhood:        Сотрудник студенческого совета
         monitor:            Староста этажа (секции)
-        orderly:            Дежурный СООПР
-        sanitary_committee: Санитарная комиссия
+        orderly:            Дежурный сотрудник СООПР
+        sanitary_committee: Сотрудник санитарной комиссии
 
     record:
       <<: *enums
