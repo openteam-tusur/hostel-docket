@@ -8,15 +8,29 @@
     <%= l record.created_at, :format => :long %>
   </div>
 
+  <div class="document">
+    Документ №<%= record.document_number || ' не указан' %>
+  </div>
+
   <div class="point">
     <%= record.full_description %>
   </div>
 
-  <div class="mark">
-    <%= "#{record.mark} балл." if record.mark.present? %>
-  </div>
+  <% if record.mark.present? %>
+    <div class="mark">
+      <%= "#{record.mark} балл." %>
+    </div>
+  <% end %>
 
-  <div class="note">
-    <%= record.note.map(&:text).join(', ') %>
-  </div>
+  <% if record.note.any? %>
+    <div class="note">
+      <%= record.note.map(&:text).join(', ') %>
+    </div>
+  <% end %>
+
+  <% if record.memo.present? %>
+    <div class="memo">
+      <%= record.memo %>
+    </div>
+  <% end %>
 </li>

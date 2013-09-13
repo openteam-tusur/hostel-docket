@@ -1,7 +1,7 @@
 class Record < ActiveRecord::Base
   extend Enumerize
   belongs_to :roomer
-  attr_accessible :initiator, :mark, :memo, :note, :number, :description
+  attr_accessible :initiator, :mark, :memo, :note, :number, :description, :document_number
   validates_format_of :number, :with => /\A\d+(\.\d+)*\z/
   before_create :set_info
 

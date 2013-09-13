@@ -9,6 +9,7 @@ ru:
         number:            Пункт
 
       record:
+        document_number:    Номер объяснительной/докладной
         hostel:             Общежитие
         memo:               Примечания
         room:               Номер комнаты

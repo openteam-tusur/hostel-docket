@@ -26,4 +26,8 @@ class Roomer < ActiveRecord::Base
   def current_rating
     records.by_current_year.sum(:mark)
   end
+
+  def current_notes
+    records.by_current_year.map{|r| [r.note.map(&:text).join(', '), r.created_at] if r.note.any? }.compact
+  end
 end
