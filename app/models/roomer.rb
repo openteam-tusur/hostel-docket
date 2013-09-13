@@ -1,5 +1,5 @@
 class Roomer < ActiveRecord::Base
-  attr_accessible :name, :patronymic, :surname
+  attr_accessible :name, :patronymic, :surname, :room_id
   belongs_to :room
   has_one :hostel, :through => :room
   has_many :records, :dependent => :destroy, :order => 'created_at DESC'

@@ -13,9 +13,16 @@ task :sync_roomers => :environment do
 
   items.each do |item|
     hostel = Hostel.find_by_contingent_id(item[:hostel_id].squish)
-    room = hostel.rooms.find_or_create_by_number("#{item[:room_number_part1]}#{item[:room_number_part2]}#{item[:room_number_part3]}".squish)
+    room = hostel.rooms.find_or_create_by_number(
+      "#{item[:room_number_part1]}#{item[:room_number_part2]}#{item[:room_number_part3]}".squish)
+
     surname, name, patronymic = item[:student_name].split(' ').map(&:squish)
-    roomer = room.roomers.find_or_create_by_surname_and_name_and_patronymic(:surname => surname, :name => name, :patronymic => patronymic)
+    roomer = Roomer.find_or_create_by_surname_and_name_and_patronymic_and_room_id(
+      :surname => surname,
+      :name => name,
+      :patronymic => patronymic,
+      :room_id => room.id)
+
     room.update_column(:deleted_at, nil)
     roomer.update_column(:deleted_at, nil)
     bar.increment!
