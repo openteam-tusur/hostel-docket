@@ -6,9 +6,7 @@ class Ability
 
     can :manage, :all if user.administrator?
 
-    can :read, Hostel do |hostel|
-      user.manager_of? hostel
-    end
+    can :read, Hostel if user.manager?
 
     can :read, Room do |room|
       can? :read, room.hostel

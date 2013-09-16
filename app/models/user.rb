@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
 
   scope :with_permissions, proc { |role| joins(:permissions).where(:permissions => { :role => role }).uniq }
 
+  searchable do
+    text :to_s
+    text :email
+    string :to_s
+  end
+
   def to_s
     [].tap do |s|
       s << last_name
@@ -18,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    super(:only => [:id, :email]).merge({ :label => "#{to_s} <#{email}>", :name => "#{to_s} <#{email}>" })
+    super(:only => [:id]).merge({ :label => "#{to_s} <#{email}>", :value => email })
   end
 end
 

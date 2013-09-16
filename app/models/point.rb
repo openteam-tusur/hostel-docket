@@ -39,6 +39,6 @@ class Point < ActiveRecord::Base
   end
 
   def as_json(options)
-    super(:only => [:id]).merge({ :label => full_description, :name => full_description })
+    super(:only => [:id]).merge({ :label => full_description, :value => full_description })
   end
 end

@@ -15,7 +15,16 @@ class Permission < ActiveRecord::Base
   validates_email_format_of :email
 
   def self.validates_presence_of(*attr_names)
-    super attr_names - [:user]
+    new_attrs = []
+    option = {}
+    attr_names.each do |attr|
+      if attr.class == Hash
+
+        next
+      end
+      new_attrs << attr if attr != :user
+    end
+    super new_attrs, option
   end
 
   before_validation :set_context_type
