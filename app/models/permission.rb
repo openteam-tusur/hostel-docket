@@ -12,7 +12,7 @@ class Permission < ActiveRecord::Base
   validates_presence_of :context_id, :context_type, :if => :role_manager?
 
   validates_uniqueness_of :context_id, :scope => :email
-  validates_email_format_of :email
+  validates_email_format_of :email, :email => 'Неверный формат электронной почты'
 
   def self.validates_presence_of(*attr_names)
     new_attrs = []
