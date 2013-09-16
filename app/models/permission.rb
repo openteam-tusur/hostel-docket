@@ -32,7 +32,9 @@ class Permission < ActiveRecord::Base
 
   scope :by_user, ->(a) { order('email') }
 
-  normalize_attribute :email
+  normalize_attribute :email do |value|
+    value.present? ? value.downcase : value
+  end
 
   enumerize :role,
     :in => [:administrator, :manager],
