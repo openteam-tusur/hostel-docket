@@ -9,7 +9,8 @@ HostelDocket::Application.routes.draw do
       end
     end
   end
-  resources :permissions, :except => [:show]
+  resources :permissions, :except => [:show, :edit, :update]
+  resources :users, :only => [:index]
 
   get '/search' => 'application#search'
 

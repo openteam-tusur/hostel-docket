@@ -1,8 +1,7 @@
 <li>
   <div class="actions">
-    <%= link_to "редактировать", edit_permission_path(permission) %>
     <%= link_to "удалить", permission_path(permission), :method => :delete, :confirm => 'Вы уверены?' %>
   </div>
 
-  <%= permission.user %> (<%= permission.user.email %>) &mdash; <%= permission.role_text %> <%= permission.context if permission.role_manager? %>
+  <%= permission %>
 </li>

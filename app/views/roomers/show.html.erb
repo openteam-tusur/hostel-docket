@@ -37,7 +37,7 @@
 <div class="adding_new_record">
   <h3>Добавление записи</h3>
   <%= simple_form_for :search, :url => search_points_path, :remote => true, :method => :get do |f| %>
-    <%= f.input :q, :input_html => { :class => 'need_autocomplete' }, :label => false, :placeholder => 'Начните писать номер пункта или текст статьи' %>
+    <%= f.input :q, :input_html => { :class => 'need_autocomplete for_points' }, :label => false, :placeholder => 'Начните писать номер пункта или текст статьи' %>
   <% end %>
   <div class="actions">
     <%= link_to 'добавить новую запись', new_hostel_room_roomer_record_path(@hostel, @room, @roomer), :class => 'new_record_link disabled' %>

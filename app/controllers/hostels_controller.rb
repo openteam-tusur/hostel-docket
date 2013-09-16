@@ -4,10 +4,10 @@ class HostelsController < ApplicationController
   actions :index, :show
 
   def collection
-    if current_user.manager?
-      super.select{|h| current_user.hostel_ids.include?(h.id)}
-    else
+    if current_user.administrator?
       super
+    else
+      super.select{|h| current_user.hostel_ids.include?(h.id)}
     end
   end
 end

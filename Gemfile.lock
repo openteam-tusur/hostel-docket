@@ -237,6 +237,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    validates_email_format_of (1.5.3)
     warden (1.2.1)
       rack (>= 1.0)
     wasabi (3.1.0)
@@ -278,4 +279,5 @@ DEPENDENCIES
   sunspot_solr
   uglifier
   unicorn
+  validates_email_format_of
   whenever

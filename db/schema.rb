@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130916094931) do
+ActiveRecord::Schema.define(:version => 20130916094932) do
 
   create_table "hostels", :force => true do |t|
     t.string   "address"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130916094931) do
     t.string   "role"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "email"
   end
 
   add_index "permissions", ["user_id", "role", "context_id", "context_type"], :name => "by_user_and_role_and_context"

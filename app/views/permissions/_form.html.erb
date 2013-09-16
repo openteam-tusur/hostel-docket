@@ -1,6 +1,11 @@
 <%= simple_form_for resource do |f| %>
   <%= f.input :role, :include_blank => false %>
-  <%= f.input :user_id, :as => :select, :collection => User.all, :selected => f.object.user %>
+  <%= f.input :email,
+              :input_html => { :class => 'need_autocomplete for_emails' },
+              :label => 'Пользователь',
+              :placeholder => 'Начните писать фамилию или электронную почту' %>
+
+  <%= f.input :user_id, :as => :hidden %>
   <%= f.input :context_id, :collection => Hostel.all, :selected => f.object.context.try(:id), :include_blank => true %>
 
   <div class="buttons">

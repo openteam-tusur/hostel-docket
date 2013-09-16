@@ -1,23 +1,29 @@
 # encoding: utf-8
 
 class Permission < ActiveRecord::Base
+  attr_accessible :role, :context_id, :user_id, :email
+
   extend Enumerize
 
   belongs_to :user
   belongs_to :context, :polymorphic => true
 
-  attr_accessible :role, :context_id, :user_id
-
-  validates_presence_of :user_id, :role
-
+  validates_presence_of :email, :role
   validates_presence_of :context_id, :context_type, :if => :role_manager?
 
-  validates_uniqueness_of :context_id, scope: :user_id
+  validates_uniqueness_of :context_id, :scope => :email
+  validates_email_format_of :email
+
+  def self.validates_presence_of(*attr_names)
+    super attr_names - [:user]
+  end
 
   before_validation :set_context_type
   before_validation :reset_context, :if => :role_administrator?
 
-  scope :by_user, ->(a) { joins(:user).order('users.last_name ASC, users.first_name ASC') }
+  scope :by_user, ->(a) { order('email') }
+
+  normalize_attribute :email
 
   enumerize :role,
     :in => [:administrator, :manager],
@@ -26,6 +32,19 @@ class Permission < ActiveRecord::Base
     :scope => true
 
   sso_auth_permission :roles => %w[administrator manager]
+
+  def self.activate_for_user(user)
+    where(:email => user.email).update_all :user_id => user.id
+  end
+
+  def to_s
+    ''.tap do |s|
+      s << "&lt;#{user.email}&gt; #{user} &mdash; " if user.present?
+      s << "&lt;#{email}&gt; роль не активирована &mdash; " if user.nil?
+      s << role_text
+      s << " &laquo;#{context}&raquo;" if role_manager?
+    end.html_safe
+  end
 
 private
   def set_context_type
