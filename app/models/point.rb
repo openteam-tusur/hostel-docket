@@ -27,6 +27,8 @@ class Point < ActiveRecord::Base
 
   validates_format_of :number, :with => /\A\d+(\.\d+)*\z/
 
+  normalize_attributes :description, :mark, :note, :number
+
   searchable do
     text :full_description
     string :number

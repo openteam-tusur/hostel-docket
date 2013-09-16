@@ -1,19 +1,17 @@
-defaults: &defaults
-  contingent:
-    wsdl:       url
-    auth:
-      login:    user
-      password: pass
+app:
+  secret:     SECRET
 
-  app:
-    secret:     SECRET
+contingent:
+  wsdl:       url
+  auth:
+    login:    user
+    password: pass
 
-  errors:
-    key:        SECRET
-    host:       errors.openteam.ru
+errors:
+  key:        SECRET
+  host:       errors.openteam.ru
 
-development:
-  <<: *defaults
-
-production:
-  <<: *defaults
+sso:
+  key:        KEY
+  secret:     SECRET
+  url:        URL

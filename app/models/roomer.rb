@@ -13,6 +13,7 @@ class Roomer < ActiveRecord::Base
     text :patronymic
     string :full_name
     boolean :active
+    integer (:hostel_id) { hostel.id }
   end
 
   def active

@@ -1,8 +1,8 @@
 require 'progress_bar'
 desc "Syncing roomers"
 task :sync_roomers => :environment do
-  client = Savon.client(:wsdl => Settings.contingent.wsdl, :encoding => 'UTF-8', :log_level => :error)
-  response = client.call(:get_student_rooms, :message => Settings.contingent.auth)
+  client = Savon.client(:wsdl => Settings['contingent.wsdl'], :encoding => 'UTF-8', :log_level => :error)
+  response = client.call(:get_student_rooms, :message => Settings['contingent.auth'])
   result = response.body[:get_student_rooms_response][:get_student_rooms_result]
   items = result.values.flatten
 

@@ -1,0 +1,15 @@
+<div class='breadcrumbs'>
+  <ul>
+    <li>
+      <span>Управление ролями</span>
+    </li>
+  </ul>
+</div>
+
+<%= link_to 'Добавить роль', new_permission_path, :class => 'to_right' %>
+<h1>Список ролей</h1>
+
+<ul class='list'>
+  <%= render collection %>
+</ul>
+

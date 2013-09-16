@@ -12,15 +12,17 @@ end
 
 group :default do
   gem 'attribute_normalizer'
+  gem 'configliere'
   gem 'enumerize'
+  gem 'has_scope'
   gem 'inherited_resources'
   gem 'pg'
   gem 'progress_bar'
   gem 'rails', '~> 3.2'
   gem 'russian'
   gem 'savon'
-  gem 'settingslogic'
   gem 'simple_form'
+  gem 'sso-auth'
   gem 'sunspot_rails'
   gem 'whenever'
 end

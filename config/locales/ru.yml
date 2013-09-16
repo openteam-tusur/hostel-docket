@@ -1,6 +1,10 @@
 ru:
   activerecord:
     attributes:
+      permission:
+        user_id:           Пользователь
+        context_id:        Общежитие
+
       point: &attrs
         description:       Название статьи
         initiator:         Инициатор
@@ -15,7 +19,15 @@ ru:
         room:               Номер комнаты
         <<: *attrs
 
+  cancan:
+    access_denied:          Доступ запрещен. Недостаточно прав.
+
   enumerize:
+    permission:
+      role:
+        administrator:      Админ
+        manager:            Менеджер
+
     point: &enums
       note:
         confiscation:       Конфискация

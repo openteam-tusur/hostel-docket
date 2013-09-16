@@ -7,6 +7,7 @@ class Room < ActiveRecord::Base
 
   searchable do
     string :number
+    integer (:hostel_id) { hostel.id }
   end
 
   def title

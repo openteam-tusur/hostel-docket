@@ -30,6 +30,8 @@ class Record < ActiveRecord::Base
 
   scope :by_current_year, -> { where(:created_at => year_dates[:begin_of_year]..year_dates[:end_of_year]) }
 
+  normalize_attributes :document_number
+
   def full_description
     "#{number} #{description}"
   end

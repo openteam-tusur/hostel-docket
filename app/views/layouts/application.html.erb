@@ -7,17 +7,33 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div class="message_wrapper <%= 'notice' if notice %> <%= 'alert' if alert %>" <%= "style=display:none;" unless notice || alert %>>
+      <%= notice %>
+      <%= alert %>
+    </div>
+
+    <div class="auth_block to_right">
+      <%= render :partial => "sso-auth/shared/user_box" %>
+    </div>
+
     <div class="menu">
-      <%= link_to "Список общежитий", root_path %>
-      <%= link_to "Список статей", points_path %>
+      <%= link_to "Список общежитий", hostels_path %>
+      <%= link_to "Список статей", points_path if user_signed_in? && current_user.administrator? %>
+      <%= link_to "Управление ролями", permissions_path if user_signed_in? && current_user.administrator? %>
     </div>
 
-    <div class="search">
-      <%= simple_form_for :search, :url => search_path, :method => :get do |f| %>
-        <%= f.input :q, :label => false, :placeholder => 'ФИО жильца или номер комнаты', :input_html => { :name => :q }, :autofocus => true %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="search">
+        <%= simple_form_for :search, :url => search_path, :method => :get do |f| %>
+          <%= f.input :q,
+            :label => false,
+            :placeholder => 'ФИО жильца или номер комнаты',
+            :input_html => { :name => :q },
+            :autofocus => true %>
+        <% end %>
+      </div>
 
-    <%= yield %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
