@@ -26,6 +26,23 @@ class User < ActiveRecord::Base
   def as_json(options = {})
     super(:only => [:id]).merge({ :label => "#{to_s} <#{email}>", :value => email })
   end
+
+  def sso_auth_name
+    [].tap do |s|
+      s << last_name
+      s << first_name[0]+'.'
+      s << patronymic[0]+'.' if patronymic.present?
+      s << "<#{email}>"
+    end.join(' ')
+  end
+
+  def patronymic
+    parsed_raw_info.try(:[], 'user').try(:[], 'middle_name')
+  end
+
+  def parsed_raw_info
+    JSON.parse(raw_info)
+  end
 end
 
 # == Schema Information

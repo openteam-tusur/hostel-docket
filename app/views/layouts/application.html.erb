@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Рейтинг общежития</title>
+    <title>Рейтинг общежитий ТУСУР</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -12,8 +12,14 @@
       <%= alert %>
     </div>
 
-    <div class="auth_block to_right">
-      <%= render :partial => "sso-auth/shared/user_box" %>
+    <div class="header">
+      <div class="logo">
+        <%= link_to "Рейтинг общежитий ТУСУР", '/', :title => 'Рейтинг общежитий ТУСУР' %>
+      </div>
+      <div class="title">Рейтинг общежитий ТУСУР</div>
+      <div class="auth_block">
+        <%= render :partial => "sso-auth/shared/user_box" %>
+      </div>
     </div>
 
     <div class="menu">

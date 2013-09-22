@@ -42,8 +42,33 @@ a
     color: #8174e3
 
 body
+  background: #F7FBFE
   margin: 15px auto
   width: 1024px
+
+.header
+  +clearfix
+
+  .logo
+    float: left
+
+    a
+      background: image_url('tusur.png') no-repeat 0 0
+      display: block
+      height: 47px
+      text-indent: -9999px
+      width: 150px
+
+  .title
+    float: left
+    font-size: 24px
+    line-height: 24px
+    text-align: right
+    width: 530px
+
+  .auth_block
+    +clearfix
+    float: right
 
 .message_wrapper
   display: block
