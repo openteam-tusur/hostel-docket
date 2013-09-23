@@ -12,6 +12,8 @@ HostelDocket::Application.routes.draw do
   resources :permissions, :except => [:show, :edit, :update]
   resources :users, :only => [:index]
 
+  get '/stats' => 'statistics#search', :as => :stats
+
   get '/search' => 'application#search'
 
   root :to => 'application#index'

@@ -1,0 +1,47 @@
+<h1>Статистика</h1>
+
+<%= simple_form_for @search_object, :url => stats_path, :method => :get do |f| %>
+  <%= f.input :hostel_ids,
+              :as => :check_boxes,
+              :label => 'Общежитие:',
+              :collection => Hostel.all,
+              :required => false %>
+
+  <%= f.input :record_points,
+              :as => :check_boxes,
+              :label => 'Статьи:',
+              :collection => Point.all,
+              :required => false %>
+
+  <%= f.input :record_notes,
+              :as => :check_boxes,
+              :label => 'Дополнительно:',
+              :collection => Point.enumerized_attributes[:note].options,
+              :required => false %>
+
+
+  <%= f.input :start_at,
+              :required => false,
+              :label => 'Начиная с:',
+              :as => :date_picker %>
+
+  <%= f.input :end_at,
+              :required => false,
+              :label => 'До:',
+              :as => :date_picker %>
+
+  <div class="buttons">
+    <%= f.submit 'Найти' %>
+  </div>
+<% end %>
+
+<ul class='list'>
+  <% @results.each do |result| %>
+    <li>
+      <%= link_to result, [result.hostel, result.room, result], :target => '_blank' %>
+      (<%= [result.hostel.title, result.room, result.current_rating_to_s, "#{result.records.count} зап.", "#{result.current_notes_count} доп."].join(', ') %>)
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @results %>

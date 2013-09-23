@@ -46,3 +46,11 @@ ru:
 
     record:
       <<: *enums
+
+  views:
+    pagination:
+      first:  Первая
+      last: Последняя
+      next: '&rarr;'
+      previous: '&larr;'
+      truncate: '...'

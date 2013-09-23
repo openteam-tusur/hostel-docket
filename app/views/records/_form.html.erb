@@ -6,6 +6,7 @@
   <% if resource.new_record? %>
     <%= f.input :note, :as => :check_boxes, :checked => @point.note.to_ary %>
     <%= f.input :initiator, :as => :check_boxes, :checked => @point.initiator.to_ary %>
+    <%= f.input :point_id, :as => :hidden, :input_html => { :value => @point.id } %>
   <% else %>
     <%= f.input :note, :as => :check_boxes %>
     <%= f.input :initiator, :as => :check_boxes %>

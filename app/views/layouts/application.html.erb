@@ -25,19 +25,22 @@
     <div class="menu">
       <%= link_to "Список общежитий", hostels_path %>
       <%= link_to "Список статей", points_path if user_signed_in? && current_user.administrator? %>
+      <%= link_to "Статистика", stats_path if user_signed_in? && current_user.administrator? %>
       <%= link_to "Управление ролями", permissions_path if user_signed_in? && current_user.administrator? %>
     </div>
 
     <% if user_signed_in? %>
-      <div class="search">
-        <%= simple_form_for :search, :url => search_path, :method => :get do |f| %>
-          <%= f.input :q,
-            :label => false,
-            :placeholder => 'ФИО жильца или номер комнаты',
-            :input_html => { :name => :q },
-            :autofocus => true %>
-        <% end %>
-      </div>
+      <% if ['hostels', 'rooms', 'roomers', 'application'].include?(controller_name) %>
+        <div class="search">
+          <%= simple_form_for :search, :url => search_path, :method => :get do |f| %>
+            <%= f.input :q,
+              :label => false,
+              :placeholder => 'ФИО жильца или номер комнаты',
+              :input_html => { :name => :q },
+              :autofocus => true %>
+          <% end %>
+        </div>
+      <% end %>
 
       <%= yield %>
     <% end %>

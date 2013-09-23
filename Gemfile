@@ -11,11 +11,13 @@ group :assets do
 end
 
 group :default do
+  gem 'active_attr'
   gem 'attribute_normalizer'
   gem 'configliere'
   gem 'enumerize'
   gem 'has_scope'
   gem 'inherited_resources'
+  gem 'kaminari'
   gem 'pg'
   gem 'progress_bar'
   gem 'rails', '~> 3.2'

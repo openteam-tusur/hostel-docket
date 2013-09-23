@@ -1,9 +1,12 @@
 class Record < ActiveRecord::Base
   extend Enumerize
   belongs_to :roomer
-  attr_accessible :initiator, :mark, :memo, :note, :number, :description, :document_number
+  belongs_to :point
+  attr_accessible :initiator, :mark, :memo, :note, :number, :description, :document_number, :point_id
   validates_format_of :number, :with => /\A\d+(\.\d+)*\z/
   before_create :set_info
+  after_save :roomer_reindex
+  after_destroy :roomer_reindex
 
   serialize :note, Array
   enumerize :note,
@@ -53,5 +56,9 @@ private
   def set_info
     self.hostel = roomer.room.hostel.title
     self.room   = roomer.room.to_s
+  end
+
+  def roomer_reindex
+    roomer.index
   end
 end

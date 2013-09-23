@@ -7,19 +7,19 @@ class ApplicationController < ActionController::Base
 
   def search
     roomers = Roomer.search do
-      fulltext params[:q]
+      fulltext params[:q] if params[:q].present?
       with(:active, true)
       with(:hostel_id, current_user.hostel_ids) if current_user.manager?
       order_by(:full_name)
     end.results
 
     rooms = Room.search do
-      with(:number, params[:q])
+      with(:number, params[:q]) if params[:q].present?
       with(:hostel_id, current_user.hostel_ids) if current_user.manager?
       order_by(:number)
     end.results
 
-    @results = roomers + rooms
+    @results = Kaminari.paginate_array(roomers + rooms).page(params[:page]).per(20)
   end
 
   rescue_from CanCan::AccessDenied do |exception|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130916094932) do
+ActiveRecord::Schema.define(:version => 20130922155142) do
 
   create_table "hostels", :force => true do |t|
     t.string   "address"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130916094932) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "document_number"
+    t.integer  "point_id"
   end
 
   add_index "records", ["roomer_id"], :name => "index_records_on_roomer_id"
