@@ -39,6 +39,10 @@ class Point < ActiveRecord::Base
     "#{number} #{description}"
   end
 
+  def to_label
+    "#{number} <span title='#{description}'></span>".html_safe
+  end
+
   def as_json(options)
     super(:only => [:id]).merge({ :label => full_description, :value => full_description })
   end

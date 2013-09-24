@@ -332,3 +332,67 @@ form
   right: 0
   top: 0
   z-index: 2
+
+.stats_form
+  +clearfix
+
+  .search_hostel_ids
+    float: left
+    margin: 0 25px 0 0
+    width: 120px
+
+    label.checkbox
+      +clearfix
+      +inline-block
+
+  .search_record_notes
+    +clearfix
+    float: left
+    margin: 0 25px 0 0
+    width: 660px
+
+    label.checkbox
+      +inline-block
+      width: 330px
+
+  .date_range
+    +clearfix
+    float: left
+
+    .search_start_at, .search_end_at
+      float: left
+      input
+        width: 68px
+
+    .search_start_at
+      margin: 0 25px 0 0
+
+  .search_record_points
+    +clearfix
+    clear: both
+    padding: 15px 0 0 0
+
+    label.checkbox
+      +clearfix
+      +inline-block
+      width: 93px
+
+      span
+        +inline-block
+        background: image_url('question.png') no-repeat left center
+        height: 16px
+        position: relative
+        margin-top: -5px
+        width: 16px
+
+        &:hover
+          cursor: pointer
+
+  .buttons
+    +clearfix
+    clear: both
+    text-align: right
+
+    a
+      font-size: 12px
+      margin: 0 25px 0 0
