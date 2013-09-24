@@ -1,4 +1,6 @@
 $ ->
   $('.clear').on 'click', ->
-    $(this).closest('form').find('input:checked').prop('checked', false)
+    form = $(this).closest('form')
+    form.find('input:checked').prop('checked', false)
+    form.find('input.datepicker').val('')
     false
