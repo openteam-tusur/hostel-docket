@@ -1,11 +1,14 @@
 <li>
-  <div class="actions">
-    <%= link_to "редактировать", edit_hostel_room_roomer_record_path(@hostel, @room, @roomer, record) %>
-    <%= link_to "удалить", hostel_room_roomer_record_path(@hostel, @room, @roomer, record), :method => :delete, :confirm => 'Вы уверены?' %>
-  </div>
+  <% unless record.destroyed? %>
+    <div class="actions">
+      <%= link_to "редактировать", edit_hostel_room_roomer_record_path(@hostel, @room, @roomer, record) %>
+      <%= link_to "удалить", hostel_room_roomer_record_path(@hostel, @room, @roomer, record), :method => :delete, :confirm => 'Вы уверены?' %>
+    </div>
+  <% end %>
 
   <div class="date">
-    <%= l record.created_at, :format => :long %>
+    <%= l record.updated_at, :format => :long %>,
+    <%= record.author || 'автор не указан' %>
   </div>
 
   <div class="document">

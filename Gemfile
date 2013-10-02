@@ -18,6 +18,8 @@ group :default do
   gem 'has_scope'
   gem 'inherited_resources'
   gem 'kaminari'
+  gem 'paper_trail'
+  gem 'paranoia'
   gem 'pg'
   gem 'progress_bar'
   gem 'rails', '~> 3.2'

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   sso_auth_user
 
   has_many :permissions
+  has_many :records
 
   scope :with_permissions, proc { |role| joins(:permissions).where(:permissions => { :role => role }).uniq }
 

@@ -1,7 +1,11 @@
 class Record < ActiveRecord::Base
+  acts_as_paranoid
   extend Enumerize
+  has_paper_trail
+
   belongs_to :roomer
   belongs_to :point
+  belongs_to :user
   attr_accessible :initiator, :mark, :memo, :note, :number, :description, :document_number, :point_id
   validates_format_of :number, :with => /\A\d+(\.\d+)*\z/
   before_create :set_info
@@ -37,6 +41,10 @@ class Record < ActiveRecord::Base
 
   def full_description
     "#{number} #{description}"
+  end
+
+  def author
+    User.find_by_id(originator)
   end
 
   def self.year_dates

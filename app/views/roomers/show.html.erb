@@ -55,3 +55,13 @@
     <li class='empty'>Нет записей</li>
   <% end %>
 </ul>
+
+<% deleted_records = @roomer.records.only_deleted.by_current_year %>
+<% if deleted_records.any? %>
+  <div class="deleted_records">
+    <h2>Удаленные записи</h2>
+    <ul class='list'>
+      <%= render deleted_records %>
+    </ul>
+  </div>
+<% end %>
