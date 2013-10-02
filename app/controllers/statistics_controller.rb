@@ -2,7 +2,7 @@ class StatisticsController < ApplicationController
   def search
     authorize! :manage, :statistics
     search_options = params[:search] || {}
-    search_options.merge!({'hostel_ids' => current_user.hostel_ids}) if current_user.manager?
+    search_options.merge!({'hostel_ids' => current_user.hostel_ids}) if current_user.manager? || current_user.reader?
     @search_object = Search.new(search_options)
 
     @results = Roomer.search do |s|

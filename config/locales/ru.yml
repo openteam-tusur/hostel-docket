@@ -27,6 +27,7 @@ ru:
       role:
         administrator:      Админ
         manager:            Менеджер
+        reader:             Читатель
 
     point: &enums
       note:

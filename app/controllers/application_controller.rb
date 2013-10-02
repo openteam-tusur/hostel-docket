@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
     roomers = Roomer.search do
       fulltext params[:q] if params[:q].present?
       with(:active, true)
-      with(:hostel_id, current_user.hostel_ids) if current_user.manager?
+      with(:hostel_id, current_user.hostel_ids) if current_user.manager? || current_user.reader?
       order_by(:full_name)
     end.results
 
     rooms = Room.search do
       with(:number, params[:q]) if params[:q].present?
-      with(:hostel_id, current_user.hostel_ids) if current_user.manager?
+      with(:hostel_id, current_user.hostel_ids) if current_user.manager? || current_user.reader?
       order_by(:number)
     end.results
 

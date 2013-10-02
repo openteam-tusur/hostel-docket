@@ -5,10 +5,10 @@ class Ability
     return nil unless user
 
     can :manage, :all if user.administrator?
-    can :manage, :statistics if user.manager?
+    can :manage, :statistics if user.manager? || user.reader?
 
     can :read, Hostel do |hostel|
-      user.manager_of?(hostel)
+      user.manager_of?(hostel) || user.reader_of?(hostel)
     end
 
     can :read, Room do |room|
@@ -20,9 +20,9 @@ class Ability
     end
 
     can :manage, Record do |record|
-      can? :read, record.roomer
+      user.manager_of?(record.roomer.hostel) && can?(:read, record.roomer)
     end
 
-    can :search, :all if user.manager?
+    can :search, :all if user.manager? || user.reader?
   end
 end
