@@ -25,7 +25,7 @@
     <div class="menu">
       <%= link_to "Список общежитий", hostels_path %>
       <%= link_to "Список статей", points_path if user_signed_in? && current_user.administrator? %>
-      <%= link_to "Статистика", stats_path if user_signed_in? && current_user.administrator? %>
+      <%= link_to "Статистика", stats_path if can? :manage, :statistics %>
       <%= link_to "Управление ролями", permissions_path if user_signed_in? && current_user.administrator? %>
     </div>
 

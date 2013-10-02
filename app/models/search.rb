@@ -10,7 +10,7 @@ class Search
 
   %w(hostel_ids record_points).each do |method_name|
     define_method "#{method_name}=" do |value=nil|
-      instance_variable_set("@#{method_name}", value && value.reject!(&:blank?).any? ? value.map(&:to_i) : nil)
+      instance_variable_set("@#{method_name}", value && value.reject(&:blank?).any? ? value.map(&:to_i) : nil)
     end
   end
 

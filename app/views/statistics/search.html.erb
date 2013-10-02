@@ -4,7 +4,7 @@
   <%= f.input :hostel_ids,
               :as => :check_boxes,
               :label => 'Общежитие:',
-              :collection => Hostel.all,
+              :collection => current_user.administrator? ? Hostel.all : current_user.hostels,
               :required => false %>
 
   <%= f.input :record_notes,

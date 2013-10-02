@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     permissions.map(&:context_id)
   end
 
+  def hostels
+    permissions.map(&:context)
+  end
+
   def as_json(options = {})
     super(:only => [:id]).merge({ :label => "#{to_s} <#{email}>", :value => email })
   end

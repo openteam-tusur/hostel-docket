@@ -5,8 +5,11 @@ class Ability
     return nil unless user
 
     can :manage, :all if user.administrator?
+    can :manage, :statistics if user.manager?
 
-    can :read, Hostel if user.manager?
+    can :read, Hostel do |hostel|
+      user.manager_of?(hostel)
+    end
 
     can :read, Room do |room|
       can? :read, room.hostel
