@@ -57,7 +57,7 @@ class Permission < ActiveRecord::Base
       s << "&lt;#{user.email}&gt; #{user} &mdash; " if user.present?
       s << "&lt;#{email}&gt; роль не активирована &mdash; " if user.nil?
       s << role_text
-      s << " &laquo;#{context}&raquo;" if role_manager?
+      s << " &laquo;#{context}&raquo;" if role_manager? || role_reader?
     end.html_safe
   end
 
