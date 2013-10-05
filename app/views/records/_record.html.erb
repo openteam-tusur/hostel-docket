@@ -1,15 +1,17 @@
 <li>
   <% if can? :manage, record %>
-    <% unless record.destroyed? %>
-      <div class="actions">
+    <div class="actions">
+      <% unless record.destroyed? %>
         <%= link_to "редактировать", edit_hostel_room_roomer_record_path(@hostel, @room, @roomer, record) %>
         <%= link_to "удалить", hostel_room_roomer_record_path(@hostel, @room, @roomer, record), :method => :delete, :confirm => 'Вы уверены?' %>
-      </div>
-    <% end %>
+      <% else %>
+        <%= link_to "восстановить", restore_hostel_room_roomer_record_path(@hostel, @room, @roomer, record), :method => :put %>
+      <% end %>
+    </div>
   <% end %>
 
   <div class="date">
-    <%= l record.updated_at, :format => :long %>,
+    <%= l record.changed_at, :format => :long %>,
     <%= record.author || 'автор не указан' %>
   </div>
 

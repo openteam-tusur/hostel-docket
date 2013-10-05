@@ -47,6 +47,11 @@ class Record < ActiveRecord::Base
     User.find_by_id(originator)
   end
 
+  def changed_at
+    o = versions.last || self
+    o.created_at
+  end
+
   def self.year_dates
     today = Time.zone.today
     dates = {}
