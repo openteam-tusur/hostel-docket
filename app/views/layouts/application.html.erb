@@ -23,13 +23,13 @@
     </div>
 
     <div class="menu">
-      <%= link_to "Список общежитий", hostels_path %>
-      <%= link_to "Список статей", points_path if user_signed_in? && current_user.administrator? %>
+      <%= link_to "Список общежитий", hostels_path if can? :read, Hostel.new %>
+      <%= link_to "Список статей", points_path if can? :manage, Point.new %>
       <%= link_to "Статистика", stats_path if can? :manage, :statistics %>
-      <%= link_to "Управление ролями", permissions_path if user_signed_in? && current_user.administrator? %>
+      <%= link_to "Управление ролями", permissions_path if can? :manage, Permission.new %>
     </div>
 
-    <% if user_signed_in? %>
+    <% if can? :search, :all %>
       <% if ['hostels', 'rooms', 'roomers', 'application'].include?(controller_name) %>
         <div class="search">
           <%= simple_form_for :search, :url => search_path, :method => :get do |f| %>
