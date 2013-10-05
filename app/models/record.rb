@@ -6,7 +6,7 @@ class Record < ActiveRecord::Base
   belongs_to :roomer
   belongs_to :point
   belongs_to :user
-  attr_accessible :initiator, :mark, :memo, :note, :number, :description, :document_number, :point_id
+  attr_accessible :initiator, :mark, :memo, :note, :number, :description, :document_number, :point_id, :deleted_at
   validates_format_of :number, :with => /\A\d+(\.\d+)*\z/
   before_create :set_info
   after_save :roomer_reindex

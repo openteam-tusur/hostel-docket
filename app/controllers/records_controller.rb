@@ -8,7 +8,7 @@ class RecordsController < ApplicationController
 
   def restore
     restore! {
-      @record.restore!
+      @record.update_attributes(:deleted_at => nil)
       redirect_to parent_path and return
     }
   end
