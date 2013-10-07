@@ -30,7 +30,8 @@ class Permission < ActiveRecord::Base
   before_validation :set_context_type
   before_validation :reset_context, :if => :role_administrator?
 
-  scope :by_user, ->(a) { order('email') }
+  scope :by_user, ->(_) { order('email') }
+  scope :without_owners, ->(_) { where(:role => [:administrator, :manager, :reader]) }
 
   normalize_attribute :email do |value|
     value.present? ? value.downcase : value
