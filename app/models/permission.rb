@@ -9,7 +9,7 @@ class Permission < ActiveRecord::Base
   belongs_to :context, :polymorphic => true
 
   validates_presence_of :email, :role
-  validates_presence_of :context_id, :context_type, :if => :manager_or_reader?
+  validates_presence_of :context_id, :context_type, :if => :manager_or_reader_or_owner?
 
   validates_uniqueness_of :context_id, :scope => :email
   validates_email_format_of :email, :message => 'Неверный формат электронной почты'
@@ -37,19 +37,19 @@ class Permission < ActiveRecord::Base
   end
 
   enumerize :role,
-    :in => [:administrator, :manager, :reader],
+    :in => [:administrator, :manager, :reader, :owner],
     :default => :manager,
     :predicates => { :prefix => true },
     :scope => true
 
-  sso_auth_permission :roles => %w[administrator manager reader]
+  sso_auth_permission :roles => %w[administrator manager reader owner]
 
   def self.activate_for_user(user)
     where(:email => user.email).update_all :user_id => user.id
   end
 
-  def manager_or_reader?
-    role_manager? || role_reader?
+  def manager_or_reader_or_owner?
+    role_manager? || role_reader? || role_owner?
   end
 
   def to_s
@@ -63,7 +63,7 @@ class Permission < ActiveRecord::Base
 
 private
   def set_context_type
-    self.context_type = 'Hostel'
+    self.context_type ||= 'Hostel'
   end
 
   def reset_context

@@ -18,6 +18,18 @@
 <h1><%= @roomer.full_name %>, <%= @hostel.title %>, комната №<%= @room.number %></h1>
 
 <div class="info">
+  <span class="label">Пользователь:</span>
+  <span class="value">
+    <% if @roomer.roomer_permission %>
+      <%= @roomer.roomer_permission.user %> <%= mail_to @roomer.roomer_permission.user.email %> (последний вход <%= l @roomer.roomer_permission.user.current_sign_in_at, :format => :long %>)
+      <%= link_to "Удалить", hostel_room_roomer_roomer_permission_path(@hostel, @room, @roomer), :method => :delete, :confirm => 'Вы уверены?' %>
+    <% else %>
+      нет пользователя
+      <%= link_to "добавить пользователя", new_hostel_room_roomer_roomer_permission_path(@hostel, @room, @roomer) %>
+    <% end %>
+  </span>
+</div>
+<div class="info">
   <span class="label">Текущий рейтинг:</span>
   <span class="value"><%= @roomer.current_rating %> балл.</span>
 </div>

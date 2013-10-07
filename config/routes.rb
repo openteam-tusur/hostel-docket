@@ -5,6 +5,7 @@ HostelDocket::Application.routes.draw do
   resources :hostels, :only => [:index, :show] do
     resources :rooms, :only => [:show] do
       resources :roomers, :only => [:show] do
+        resource :roomer_permission, :except => [:index, :show, :edit, :update]
         resources :records, :except => [:index, :show] do
           put :restore, :on => :member
         end

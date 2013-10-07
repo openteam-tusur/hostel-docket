@@ -1,0 +1,33 @@
+<div class='breadcrumbs'>
+  <ul>
+    <li>
+      <%= link_to 'Список общежитий', hostels_path %>
+    </li>
+    <li>
+      <%= link_to @hostel.title, hostel_path(@hostel) %>
+    </li>
+    <li>
+      <%= link_to "Комната №#{@room.number}", hostel_room_path(@hostel, @room) %>
+    </li>
+    <li>
+      <%= link_to @roomer.full_name, hostel_room_roomer_path(@hostel, @room, @roomer) %>
+    </li>
+    <li>
+      <span>Добавление пользователя</span>
+    </li>
+  </ul>
+</div>
+
+<h1>Добавление пользователя</h1>
+<%= simple_form_for [@hostel, @room, @roomer, @roomer_permission], :url => hostel_room_roomer_roomer_permission_path(@hostel, @room, @roomer) do |f| %>
+  <%= f.input :email,
+              :input_html => { :class => 'need_autocomplete for_emails' },
+              :label => 'Пользователь',
+              :placeholder => 'Начните писать фамилию или электронную почту' %>
+
+  <%= f.input :user_id, :as => :hidden %>
+  <div class='buttons'>
+    <%= f.submit 'Сохранить' %>
+    <%= link_to 'Отмена', hostel_room_roomer_path(@hostel, @room, @roomer) %>
+  </div>
+<% end %>
