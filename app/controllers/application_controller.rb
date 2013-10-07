@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  authorize_resource :class => false, :only => :search
+  authorize_resource :class => false, :only => [:search, :my_stats]
 
   def index
+    redirect_to my_stats_path if current_user && current_user.owner?
   end
 
   def search
@@ -20,6 +21,10 @@ class ApplicationController < ActionController::Base
     end.results
 
     @results = Kaminari.paginate_array(roomers + rooms).page(params[:page]).per(20)
+  end
+
+  def my_stats
+    @permissions = current_user.permissions.with_role(:owner)
   end
 
   rescue_from CanCan::AccessDenied do |exception|

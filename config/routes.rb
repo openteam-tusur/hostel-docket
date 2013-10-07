@@ -19,5 +19,7 @@ HostelDocket::Application.routes.draw do
 
   get '/search' => 'application#search'
 
+  get '/my_stats' => 'application#my_stats'
+
   root :to => 'application#index'
 end

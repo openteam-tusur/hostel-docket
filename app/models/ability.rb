@@ -24,5 +24,6 @@ class Ability
     end
 
     can :search, :all if user.manager? || user.reader?
+    can :my_stats, :all if user.owner?
   end
 end

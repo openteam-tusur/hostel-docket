@@ -1,0 +1,21 @@
+<% @permissions.each do |permission| %>
+  <% roomer = permission.context %>
+  <h1><%= roomer.full_name %>, <%= roomer.hostel.title %>, комната №<%= roomer.room.number %></h1>
+
+  <div class="info">
+    <span class="label">Текущий рейтинг:</span>
+    <span class="value"><%= roomer.current_rating %> балл.</span>
+  </div>
+  <% if roomer.current_notes.any? %>
+    <div class="info">
+      <span class="label">Дополнительно:</span>
+      <span class="value">
+        <ul>
+          <% roomer.current_notes.each do |note| %>
+            <li><%= note.first %> (<%= l note.last, :format => :long %>)</li>
+          <% end %>
+        </ul>
+      </span>
+    </div>
+  <% end %>
+<% end %>

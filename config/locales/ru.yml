@@ -28,6 +28,7 @@ ru:
         administrator:      Админ
         manager:            Менеджер
         reader:             Читатель
+        owner:              Пользователь
 
     point: &enums
       note:
