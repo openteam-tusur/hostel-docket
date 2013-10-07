@@ -9,7 +9,7 @@ class Ability
 
     can :read, Hostel do |hostel|
       user.manager_of?(hostel) || user.reader_of?(hostel)
-    end
+    end if user.permissions.any?
 
     can :read, Room do |room|
       can? :read, room.hostel
