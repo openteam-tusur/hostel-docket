@@ -23,6 +23,10 @@ class Ability
       user.manager_of?(record.roomer.hostel) && can?(:read, record.roomer)
     end
 
+    can :manage, Permission do |permission|
+      permission.context_type == 'Roomer' && user.manager_of?(permission.context.hostel)
+    end if user.manager?
+
     can :search, :all if user.manager? || user.reader?
     can :my_stats, :all if user.owner?
   end

@@ -21,7 +21,11 @@
   <span class="label">Пользователь:</span>
   <span class="value">
     <% if @roomer.roomer_permission %>
-      <%= @roomer.roomer_permission.user %> <%= mail_to @roomer.roomer_permission.user.email %> (последний вход <%= l @roomer.roomer_permission.user.current_sign_in_at, :format => :long %>)
+      <% if @roomer.roomer_permission.user %>
+        <%= @roomer.roomer_permission.user %> <%= mail_to @roomer.roomer_permission.user.email %> (последний вход <%= l @roomer.roomer_permission.user.current_sign_in_at, :format => :long %>)
+      <% else %>
+        пользователь еще не заходил <%= mail_to @roomer.roomer_permission.email %>
+      <% end %>
       <%= link_to "Удалить", hostel_room_roomer_roomer_permission_path(@hostel, @room, @roomer), :method => :delete, :confirm => 'Вы уверены?' %>
     <% else %>
       нет пользователя

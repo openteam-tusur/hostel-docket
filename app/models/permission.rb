@@ -27,6 +27,11 @@ class Permission < ActiveRecord::Base
     super new_attrs, option
   end
 
+  def self.validates_uniqueness_of(attr_name, options)
+    options.merge!({:scope => [:email, :context_id, :context_type]}) if attr_name == :role
+    super attr_name, options
+  end
+
   before_validation :set_context_type
   before_validation :reset_context, :if => :role_administrator?
 
