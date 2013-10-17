@@ -6,13 +6,16 @@ class Point < ActiveRecord::Base
   enumerize :note,
             :multiple => true,
             :in => [
+              :confiscation,
+              :deprivation,
               :eviction,
               :note_of_warning,
-              :sending_down,
               :recovery,
-              :deprivation,
-              :confiscation,
-              :work
+              :work,
+              :faculty_reproof,
+              :faculty_rebuke,
+              :university_rebuke,
+              :sending_down
             ]
 
   serialize :initiator, Array
