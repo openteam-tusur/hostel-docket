@@ -21,5 +21,7 @@ HostelDocket::Application.routes.draw do
 
   get '/my_stats' => 'application#my_stats'
 
+  mount API => '/'
+
   root :to => 'application#index'
 end

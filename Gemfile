@@ -15,6 +15,7 @@ group :default do
   gem 'attribute_normalizer'
   gem 'configliere'
   gem 'enumerize'
+  gem 'grape'
   gem 'has_scope'
   gem 'inherited_resources'
   gem 'kaminari'
